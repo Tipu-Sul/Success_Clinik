@@ -18,9 +18,15 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from. views import UserViewset
+from rest_framework.routers import DefaultRouter
+
+router=DefaultRouter()
+router.register('users', UserViewset)
 
 
 urlpatterns = [
+    path('',include(router.urls)),
     path('admin/', admin.site.urls),
     path('contact_us/', include('contact_us.urls')),
     path('service/', include('service.urls')),
